@@ -75,7 +75,7 @@ class ArtCastServer(
         if (path.contains("..")) return json("{}", Response.Status.FORBIDDEN)
         return try {
             val stream = appContext.assets.open("www$path")
-            newChunkedResponse(Response.Status.OK, mimeTypeForFile(path), stream)
+            newChunkedResponse(Response.Status.OK, NanoHTTPD.getMimeTypeForFile(path), stream)
         } catch (e: Exception) {
             json("{\"error\":\"not found\"}", Response.Status.NOT_FOUND)
         }
@@ -113,7 +113,7 @@ class ArtCastServer(
                 val id = uri.removePrefix("/api/image/")
                 val f = File(imgDir, id)
                 if (!f.exists() || id.contains("/") || id.contains("..")) json("{}", Response.Status.NOT_FOUND)
-                else newChunkedResponse(Response.Status.OK, mimeTypeForFile(id), FileInputStream(f))
+                else newChunkedResponse(Response.Status.OK, NanoHTTPD.getMimeTypeForFile(id), FileInputStream(f))
             }
 
             uri == "/api/history" && method == Method.GET ->

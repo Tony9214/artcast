@@ -3,6 +3,10 @@ plugins {
     id "org.jetbrains.kotlin.android"
 }
 
+def keystoreProps = new Properties()
+def keystoreFile = file(System.getProperty("user.home") + "/.artcast/keystore.properties")
+if (keystoreFile.exists()) keystoreProps.load(new FileInputStream(keystoreFile))
+
 android {
     namespace "cc.lumina.artcast"
     compileSdk 34
@@ -12,12 +16,24 @@ android {
         minSdk 23
         targetSdk 34
         versionCode 1
-        versionName "0.1.0"
+        versionName "0.0.1"
+    }
+
+    signingConfigs {
+        if (keystoreFile.exists()) {
+            release {
+                storeFile file(keystoreProps["storeFile"])
+                storePassword keystoreProps["storePassword"]
+                keyAlias keystoreProps["keyAlias"]
+                keyPassword keystoreProps["keyPassword"]
+            }
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            if (keystoreFile.exists()) signingConfig signingConfigs.release
         }
     }
 
