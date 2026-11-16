@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path
+        android:fillColor="#1a1a2e"
+        android:pathData="M0,0h48v48h-48z" />
+    <!-- light cone from projector lens -->
+    <path
+        android:fillColor="#f5d76e"
+        android:pathData="M20,18 L8,40 L40,40 L28,18 Z" />
+    <!-- lens -->
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M20,10h8v8h-8z" />
+    <!-- pencil trace line inside cone -->
+    <path
+        android:fillColor="#1a1a2e"
+        android:pathData="M14,36 L22,30 L26,34 L34,26 L36,28 L26,38 L22,34 L16,38 Z" />
+</vector>

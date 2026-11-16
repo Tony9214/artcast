@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ArtCast</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="view"></canvas>
+  <canvas id="grid"></canvas>
+  <canvas id="overlay"></canvas>
+</div>
+
+<div id="qr">
+  <div class="card">
+    <div id="qr-img"></div>
+    <div class="title">手机扫码上传图片</div>
+    <div id="qr-url" class="url"></div>
+    <div class="hint">手机与投影仪需在同一网络</div>
+  </div>
+</div>
+
+<div id="help">方向键 移动角点 · OK/回车 换角 · 1原图 2素描 3边缘 · G网格 I反色 · R复位 Q二维码 F全屏</div>
+
+<script src="../lib/qrcode.js"></script>
+<script src="warp.js"></script>
+<script src="filters.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
